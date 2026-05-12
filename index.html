@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Space | Flowers</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #0f0216; /* Deep dark purple */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Profile Section */
+        .profile-header {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #810CA8;
+            margin-bottom: 15px;
+            object-fit: cover;
+            background: #2d033b;
+        }
+
+        .names {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .bio {
+            font-size: 0.9rem;
+            color: #C147E9;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* Stats Row (like the site) */
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: #E5BEEC;
+        }
+
+        .stat-item b {
+            font-size: 1.1rem;
+        }
+
+        /* Flower Grid */
+        .grid-title {
+            text-align: left;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+
+        .flower-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .flower-card {
+            aspect-ratio: 1/1;
+            background: #2d033b;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(129, 12, 168, 0.3);
+        }
+
+        .flower-card:hover {
+            transform: scale(1.05);
+            background: #3c094d;
+        }
+
+        .flower-card i { font-size: 2rem; margin-bottom: 5px; }
+        .flower-card span { font-size: 0.7rem; color: #E5BEEC; }
+
+        /* Secret Message Modal */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal {
+            background: #2d033b;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #810CA8;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            color: #C147E9;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="profile-header">
+            <!-- Add your photo URL in src -->
+            <img src="https://via.placeholder.com/100" class="profile-pic" alt="Us">
+            <div class="names">You & Me</div>
+            <div class="bio">Growing together since day one 💜</div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item"><b>152</b><span>Flowers</span></div>
+            <div class="stat-item"><b>Infinite</b><span>Love</span></div>
+            <div class="stat-item"><b>Today</b><span>Gift Day</span></div>
+        </div>
+
+        <div class="grid-title">Our Collection</div>
+        <div class="flower-grid">
+            <div class="flower-card" onclick="openMsg('Lavender', 'Your love is as calming as lavender.')">
+                <i>🪻</i><span>Lavender</span>
+            </div>
+            <div class="flower-card" onclick="openMsg('Rose', 'Classic love for a classic girl.')">
+                <i>🌹</i><span>Rose</span>
+            </div>
+            <div class="flower-card" onclick="openMsg('Tulip', 'Words mean nothing besides the gifts you are about to open...')">
+                <i>🌷</i><span>The Secret</span>
+            </div>
+            <div class="flower-card"><i>🌻</i><span>Sun</span></div>
+            <div class="flower-card"><i>🌸</i><span>Cherry</span></div>
+            <div class="flower-card"><i>🌺</i><span>Hibiscus</span></div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div class="modal">
+            <h2 id="m-title" style="margin-bottom: 15px;"></h2>
+            <p id="m-body"></p>
+            <div class="close-btn" onclick="closeMsg()">Close</div>
+        </div>
+    </div>
+
+    <script>
+        function openMsg(title, body) {
+            document.getElementById('m-title').innerText = title;
+            document.getElementById('m-body').innerText = body;
+            document.getElementById('overlay').style.display = 'flex';
+        }
+        function closeMsg() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
